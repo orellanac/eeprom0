@@ -1,4 +1,17 @@
 #include <EEPROM.h>
+#include <Servo.h>
+Servo myservo;
+int Echo=A4;
+int Tring=A5;
+const int InputNodes=3;
+const int HiddenNodes=4;
+const int OutputNodes=4;
+int i,j;
+double  Accum;
+double Hidden [HiddenNodes];
+double Output [OutputNodes];
+float HiddenWeights [3][4] {{  Direccion, informacion }};
+float OutputWeights[4][4] {{   Direccion+1, valor  }};
 int Direccion=0;
 byte val1;
 byte val2;
@@ -26,3 +39,10 @@ void loop() {
  delay (100);
  
 }
+void stop (){
+  digitalWrite (ENA,LOW);
+  digitalWrite (ENB,LOW);
+  Serial.println ("parar");
+  
+   }
+
